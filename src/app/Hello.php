@@ -2,10 +2,21 @@
 
 namespace App;
 
+use ReflectionException;
+
 class Hello
 {
+    /**
+     * @throws ReflectionException
+     */
     public function salute()
     {
-        echo 'Bienvenido al SandBox de PHP';
+        $person = new Person(new PersonaNombre('Ciro'), 33, new Phone(612345678));
+
+        echo '<pre>';
+
+        print_r(PersonaMapper::map($person, PersonOutputDto::class));
+
+        echo '</pre>';
     }
 }
